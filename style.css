@@ -101,7 +101,7 @@ header {
   gap: 24px;
 }
 
-header img { height: 100px; mix-blend-mode: screen; }
+header img { height: 44px; }
 
 nav {
   display: flex;
@@ -1183,7 +1183,7 @@ footer {
   font-size: 13px;
 }
 
-footer img { height: 32px; opacity: .65; mix-blend-mode: screen; }
+footer img { height: 28px; opacity: .85; }
 
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a { color: rgba(255,255,255,.45); font-size: 13px; transition: color var(--transition); }
