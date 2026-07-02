@@ -278,7 +278,7 @@ nav a:focus-visible,
 /* ─── INDEX HERO ─────────────────────────────────── */
 /* === HERO (с возможностью вставки своей фото) === */
 .hero {
-  background-image: url('./img/Сенсорная комната_001_03.jpg.jpeg') center/cover no-repeat;
+  background-image: url('./img/back.webp');
   position: relative;
   min-height: 88vh;
   display: flex;
