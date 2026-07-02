@@ -101,7 +101,7 @@ header {
   gap: 24px;
 }
 
-header img { height: 30px; width: auto; max-width: none; }
+header img { height: 40px; width: auto; max-width: none; }
 
 nav {
   display: flex;
@@ -1183,7 +1183,7 @@ footer {
   font-size: 13px;
 }
 
-footer img { height: 20px; width: auto; max-width: none; opacity: .85; }
+footer img { height: 26px; width: auto; max-width: none; opacity: .85; }
 
 .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
 .footer-links a { color: rgba(255,255,255,.45); font-size: 13px; transition: color var(--transition); }
