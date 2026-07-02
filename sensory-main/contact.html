@@ -133,10 +133,48 @@
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
 
-  form.addEventListener('submit', function(e) {
+  const TG_BOT_TOKEN = '8941417185:AAErq3que8MP8Q5Fv3ig38pqmsgPxoczxdk';
+  const TG_CHAT_ID = '1105525817';
+
+  const typeLabels = {
+    request: 'Заявка на сенсорную комнату',
+    partner: 'Хочу стать партнёром',
+    other: 'Другое'
+  };
+
+  form.addEventListener('submit', async function(e) {
     e.preventDefault();
-    form.style.display = 'none';
-    success.style.display = 'block';
+    const btn = form.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Отправка...';
+
+    const data = new FormData(form);
+    const text = [
+      '🔔 Новая заявка с сайта Sensory Rooms',
+      '',
+      '👤 Имя: ' + data.get('name'),
+      '📞 Контакт: ' + data.get('contact'),
+      '📋 Тип: ' + (typeLabels[data.get('type')] || data.get('type')),
+      '',
+      '💬 Сообщение:',
+      data.get('message')
+    ].join('\n');
+
+    try {
+      const res = await fetch('https://api.telegram.org/bot' + TG_BOT_TOKEN + '/sendMessage', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT_ID, text: text })
+      });
+      const json = await res.json();
+      if (!json.ok) throw new Error(json.description);
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } catch (err) {
+      btn.disabled = false;
+      btn.textContent = 'Отправить заявку';
+      alert('Не удалось отправить заявку. Попробуйте ещё раз или напишите нам напрямую в Telegram: @bibbiabaa');
+    }
   });
 </script>
 </body>
